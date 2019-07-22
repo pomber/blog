@@ -2,13 +2,14 @@
 import blogTheme from "gatsby-theme-blog/src/gatsby-plugin-theme-ui/index";
 import merge from "deepmerge";
 
-const pageInnerMargin = 80;
+const pageInnerMargin = 85;
 const contentWidth = 420;
 
 export default merge(blogTheme, {
   colors: {
     text: "#333",
     background: "#fafafa",
+    sideColor: "#eee",
     sideBackground: "#333",
     primary: "salmon",
     modes: null,
@@ -25,6 +26,7 @@ export default merge(blogTheme, {
   },
   styles: {
     root: {
+      color: "text",
       // display: "flex",
     },
   },
