@@ -80,6 +80,9 @@ export default merge.all([
           width: "content",
           paddingRight: "pageInnerMargin",
         },
+        CodeSticker: {
+          border: 0,
+        },
         theme: {
           default: {
             code: { color: "white", background: "#202226" },
