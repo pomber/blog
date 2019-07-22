@@ -3,7 +3,7 @@ title: Build your own React
 date: 2019-04-15
 ---
 
-import { WaveSection } from "gatsby-theme-waves";
+import { WaveSection } from "gatsby-theme-waves"
 
 Lorem ipsum dolor sit amet, fugit errem volumus ex sit, magna fugit deserunt et qui. Sapientem mnesarchum ei vis, offendit appetere inimicus eu has. Te utamur voluptua per. Per dicant intellegebat in. Laboramus referrentur id his, electram philosophia sit an. Possim efficiendi no sea, eu admodum copiosae indoctum mea.
 
@@ -18,7 +18,7 @@ module.exports = {
     "gatsby-theme-blog", // highlight-line
     "gatsby-theme-notes",
   ],
-};
+}
 ```
 
 This is another paragraph after the code block.
@@ -26,23 +26,23 @@ This is another paragraph after the code block.
 ## This is a secondary heading
 
 ```jsx
-import React from "react";
-import { ThemeProvider } from "theme-ui";
-import theme from "./theme";
+import React from "react"
+import { ThemeProvider } from "theme-ui"
+import theme from "./theme"
 
 export default props => (
   <ThemeProvider theme={theme}>
     {props.children}
   </ThemeProvider>
-);
+)
 ```
 
 <WaveSection>
 
 ```jsx
-const element = <h1 title="foo">Hello</h1>;
-const container = document.getElementById("root");
-ReactDOM.render(element, container);
+const element = <h1 title="foo">Hello</h1>
+const container = document.getElementById("root")
+ReactDOM.render(element, container)
 ```
 
 We have this React app, just three lines.
@@ -53,9 +53,9 @@ the next one gets a node from the DOM, and the last one renders the react elemen
 Now, let's remove all the React specific code and replace it with vanilla javascript
 
 ```jsx 1
-const element = <h1 title="foo">Hello</h1>;
-const container = document.getElementById("root");
-ReactDOM.render(element, container);
+const element = <h1 title="foo">Hello</h1>
+const container = document.getElementById("root")
+ReactDOM.render(element, container)
 ```
 
 We start with the JSX.
@@ -66,10 +66,10 @@ const element = React.createElement(
   "h1",
   { title: "foo" },
   "Hello"
-);
+)
 
-const container = document.getElementById("root");
-ReactDOM.render(element, container);
+const container = document.getElementById("root")
+ReactDOM.render(element, container)
 ```
 
 `createElement` is very simple, it just puts all the parameters inside an object and returns it.
@@ -81,10 +81,10 @@ const element = {
     title: "foo",
     children: "Hello",
   },
-};
+}
 
-const container = document.getElementById("root");
-ReactDOM.render(element, container);
+const container = document.getElementById("root")
+ReactDOM.render(element, container)
 ```
 
 So, an element is an object with two properties
@@ -98,10 +98,10 @@ const element = {
     title: "foo",
     children: "Hello",
   },
-};
+}
 
-const container = document.getElementById("root");
-ReactDOM.render(element, container);
+const container = document.getElementById("root")
+ReactDOM.render(element, container)
 ```
 
 Now let's replace the `render`
@@ -113,18 +113,18 @@ const element = {
     title: "foo",
     children: "Hello",
   },
-};
+}
 
-const container = document.getElementById("root");
+const container = document.getElementById("root")
 
-const node = document.createElement(element.type);
-node["title"] = element.props.title;
+const node = document.createElement(element.type)
+node["title"] = element.props.title
 
-const text = document.createTextNode("");
-text["nodeValue"] = element.props.children;
+const text = document.createTextNode("")
+text["nodeValue"] = element.props.children
 
-node.appendChild(text);
-container.appendChild(node);
+node.appendChild(text)
+container.appendChild(node)
 ```
 
 We create a node using the element `type`, in this case is `h1`
@@ -137,18 +137,18 @@ const element = {
     title: "foo",
     children: "Hello",
   },
-};
+}
 
-const container = document.getElementById("root");
+const container = document.getElementById("root")
 
-const node = document.createElement(element.type);
-node["title"] = element.props.title;
+const node = document.createElement(element.type)
+node["title"] = element.props.title
 
-const text = document.createTextNode("");
-text["nodeValue"] = element.props.children;
+const text = document.createTextNode("")
+text["nodeValue"] = element.props.children
 
-node.appendChild(text);
-container.appendChild(node);
+node.appendChild(text)
+container.appendChild(node)
 ```
 
 Then we create the nodes for the children
@@ -163,18 +163,18 @@ const element = {
     title: "foo",
     children: "Hello",
   },
-};
+}
 
-const container = document.getElementById("root");
+const container = document.getElementById("root")
 
-const node = document.createElement(element.type);
-node["title"] = element.props.title;
+const node = document.createElement(element.type)
+node["title"] = element.props.title
 
-const text = document.createTextNode("");
-text["nodeValue"] = element.props.children;
+const text = document.createTextNode("")
+text["nodeValue"] = element.props.children
 
-node.appendChild(text);
-container.appendChild(node);
+node.appendChild(text)
+container.appendChild(node)
 ```
 
 Finally, we append the `textNode` to the `h1` and the `h1` to the `container`.
@@ -186,18 +186,18 @@ const element = {
     title: "foo",
     children: "Hello",
   },
-};
+}
 
-const container = document.getElementById("root");
+const container = document.getElementById("root")
 
-const node = document.createElement(element.type);
-node["title"] = element.props.title;
+const node = document.createElement(element.type)
+node["title"] = element.props.title
 
-const text = document.createTextNode("");
-text["nodeValue"] = element.props.children;
+const text = document.createTextNode("")
+text["nodeValue"] = element.props.children
 
-node.appendChild(text);
-container.appendChild(node);
+node.appendChild(text)
+container.appendChild(node)
 ```
 
 And now we have the same app as before, but without using React
