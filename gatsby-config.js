@@ -4,6 +4,7 @@ module.exports = {
       resolve: `gatsby-theme-blog`,
       options: {},
     },
+    `gatsby-theme-waves`,
   ],
   siteMetadata: {
     title: `Blog by @pomber`,
