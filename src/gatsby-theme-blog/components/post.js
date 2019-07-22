@@ -3,7 +3,7 @@ import React from "react";
 import { Styled, jsx } from "theme-ui";
 
 import Layout from "../components/layout";
-import SEO from "gatsby-theme-blog/src/components/seo";
+import SEO from "../components/seo";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
 const Post = ({
