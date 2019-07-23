@@ -5,12 +5,24 @@ date: 2019-07-20
 
 import { WaveSection } from "gatsby-theme-waves"
 
-Lorem ipsum dolor sit amet, fugit errem volumus ex sit, magna fugit deserunt et qui. Sapientem mnesarchum ei vis, offendit appetere inimicus eu has. Te utamur voluptua per. Per dicant intellegebat in. Laboramus referrentur id his, electram philosophia sit an. Possim efficiendi no sea, eu admodum copiosae indoctum mea.
+We are going to rewrite React from scratch. Step by step. Following the architecture from the real React code, but without all the optimizations and non-essential features.
 
-Sit eligendi dignissim et, sit eius ancillae voluptatibus te. Ea summo nostrum omnesque sed. Deserunt iracundia definiebas ei est. An vitae reprimique ius, facer timeam cu nam.
+This is my third time building a mini-react. The first one was before React v16. Second one was after React v16, when the Fiber architecture was introduced. And the third one, this one, is based on v16.8: the one with hooks.
 
-Id quot impetus prodesset eum, et usu iuvaret alienum. Ut amet quaerendum pro, impetus appetere disputando te per. Stet congue ancillae mei in, nam fuisset antiopam id. Ad denique blandit accommodare ius. Solum legere ea sea, per cu affert timeam, meis expetendis intellegebat ex pro.
-Delete me, and get writing!
+You can find the history with all the blog posts and code on the [Didact repo](https://github.com/pomber/didact). There's also a [talk covering the same content](https://youtu.be/8Kc2REHdwnQ).
+
+But this post is self-contained. Starting from scratch, these are all the things we'll add to our version of React one by one:
+
+- **Step I**: The `createElement` function
+- **Step II**: The `render` function
+- **Step III**: Concurrent mode
+- **Step IV**: Fibers
+- **Step V**: Render and commit phases
+- **Step VI**: Reconciliation
+- **Step VII**: Function components
+- **Step VIII**: Hooks
+
+X We'll write around 300 lines of code. Don't expect to finish this post in 10 minutes. It will take some time, but it will worth it. You can stop between steps and come back later.
 
 <WaveSection>
 
@@ -19,6 +31,10 @@ const element = <h1 title="foo">Hello</h1>
 const container = document.getElementById("root")
 ReactDOM.render(element, container)
 ```
+
+### Step Zero: Review
+
+But first, let's review some basic concepts.
 
 We have this React app, just three lines.
 

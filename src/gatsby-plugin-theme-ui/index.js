@@ -66,15 +66,31 @@ export default merge.all([
       root: {
         color: "text",
       },
+      li: {
+        marginBottom: "4px",
+      },
+      h3: {
+        marginTop: 4,
+      },
       waves: {
         Section: {
           width: contentWidth * 2 + pageInnerMargin * 2,
           marginLeft: -(contentWidth + 2 * pageInnerMargin),
+          marginTop: 0,
+          marginBottom: 0,
         },
         ScrollerContainer: {
           flex: null,
           width: "content",
           paddingLeft: pageInnerMargin,
+        },
+        ScrollerStep: {
+          padding: 0,
+          borderLeft: 0,
+        },
+        ScrollerProgress: {
+          backgroundColor: "muted",
+          left: "-25px",
         },
         CodeContainer: {
           width: "content",

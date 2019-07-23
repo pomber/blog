@@ -27,9 +27,8 @@ const Post = ({
         side={
           <Styled.p sx={{ paddingTop: 1 }}>
             <Styled.a
-              href="https://twitter.com/pomber"
+              href="https://pomb.us"
               sx={{ textDecoration: "none", color: "inherit" }}
-              title="Rodrigo Pombo"
             >
               Rodrigo Pombo
             </Styled.a>
