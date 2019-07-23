@@ -10454,6 +10454,14 @@ relay-runtime@2.0.0:
     "@babel/runtime" "^7.0.0"
     fbjs "^1.0.0"
 
+remark-import-code@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/remark-import-code/-/remark-import-code-0.0.2.tgz#49e3ff233efae86803914d177147777ec73310d7"
+  integrity sha512-oDobrlQDt1m4gnIOov3rG6xMFt7tYmbQPSzAjNMRW/bwV8Mmt1XRX7dOMNiutRSeKcwL2SyvE4DnoBlhoN1PbQ==
+  dependencies:
+    shell-quote "^1.6.1"
+    unist-util-visit "^1.4.1"
+
 remark-mdx@^1.0.21:
   version "1.0.21"
   resolved "https://registry.yarnpkg.com/remark-mdx/-/remark-mdx-1.0.21.tgz#cf5a59ad68cce6c1f687953dcf504212fbd32555"
@@ -12325,7 +12333,7 @@ unist-util-visit-parents@^2.0.0, unist-util-visit-parents@^2.0.1:
   dependencies:
     unist-util-is "^3.0.0"
 
-unist-util-visit@^1.0.0, unist-util-visit@^1.1.0, unist-util-visit@^1.3.0, unist-util-visit@^1.3.1, unist-util-visit@^1.4.0:
+unist-util-visit@^1.0.0, unist-util-visit@^1.1.0, unist-util-visit@^1.3.0, unist-util-visit@^1.3.1, unist-util-visit@^1.4.0, unist-util-visit@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/unist-util-visit/-/unist-util-visit-1.4.1.tgz#4724aaa8486e6ee6e26d7ff3c8685960d560b1e3"
   integrity sha512-AvGNk7Bb//EmJZyhtRUnNMEpId/AZ5Ph/KUpTI09WHQuDZHKovQ1oEv3mfmKpWKtoMzyMC4GLBm1Zy5k12fjIw==

@@ -1,0 +1,208 @@
+---
+title: Build your own React
+date: 2019-07-20
+---
+
+import { WaveSection } from "gatsby-theme-waves"
+
+Lorem ipsum dolor sit amet, fugit errem volumus ex sit, magna fugit deserunt et qui. Sapientem mnesarchum ei vis, offendit appetere inimicus eu has. Te utamur voluptua per. Per dicant intellegebat in. Laboramus referrentur id his, electram philosophia sit an. Possim efficiendi no sea, eu admodum copiosae indoctum mea.
+
+Sit eligendi dignissim et, sit eius ancillae voluptatibus te. Ea summo nostrum omnesque sed. Deserunt iracundia definiebas ei est. An vitae reprimique ius, facer timeam cu nam.
+
+Id quot impetus prodesset eum, et usu iuvaret alienum. Ut amet quaerendum pro, impetus appetere disputando te per. Stet congue ancillae mei in, nam fuisset antiopam id. Ad denique blandit accommodare ius. Solum legere ea sea, per cu affert timeam, meis expetendis intellegebat ex pro.
+Delete me, and get writing!
+
+<WaveSection>
+
+```jsx
+const element = <h1 title="foo">Hello</h1>
+const container = document.getElementById("root")
+ReactDOM.render(element, container)
+```
+
+We have this React app, just three lines.
+
+The first one defines a React element, using JSX,
+the next one gets a node from the DOM, and the last one renders the react element into the container.
+
+Now, let's remove all the React specific code and replace it with vanilla javascript
+
+```jsx 1
+const element = <h1 title="foo">Hello</h1>
+const container = document.getElementById("root")
+ReactDOM.render(element, container)
+```
+
+We start with the JSX.
+JSX isn't handled by React, it's handled by a transpiler like babel. Babel will transform this JSX to a call to `createElement`.
+
+```jsx
+const element = React.createElement(
+  "h1",
+  { title: "foo" },
+  "Hello"
+)
+
+const container = document.getElementById("root")
+ReactDOM.render(element, container)
+```
+
+`createElement` is very simple, it just puts all the parameters inside an object and returns it.
+
+```jsx
+const element = {
+  type: "h1",
+  props: {
+    title: "foo",
+    children: "Hello",
+  },
+}
+
+const container = document.getElementById("root")
+ReactDOM.render(element, container)
+```
+
+So, an element is an object with two properties
+the `type`, which for now it's going to be a string
+and the `props` object, containing all the attributes from the JSX and also the `children`, which here is just a string but it could be an array with more elements.
+
+```jsx 10
+const element = {
+  type: "h1",
+  props: {
+    title: "foo",
+    children: "Hello",
+  },
+}
+
+const container = document.getElementById("root")
+ReactDOM.render(element, container)
+```
+
+Now let's replace the `render`
+
+```jsx 1,2,4,7,11,12
+const element = {
+  type: "h1",
+  props: {
+    title: "foo",
+    children: "Hello",
+  },
+}
+
+const container = document.getElementById("root")
+
+const node = document.createElement(element.type)
+node["title"] = element.props.title
+
+const text = document.createTextNode("")
+text["nodeValue"] = element.props.children
+
+node.appendChild(text)
+container.appendChild(node)
+```
+
+We create a node using the element `type`, in this case is `h1`
+And assign all the element `props` to the node, here it's just the title
+
+```js 1,5,7,14,15
+const element = {
+  type: "h1",
+  props: {
+    title: "foo",
+    children: "Hello",
+  },
+}
+
+const container = document.getElementById("root")
+
+const node = document.createElement(element.type)
+node["title"] = element.props.title
+
+const text = document.createTextNode("")
+text["nodeValue"] = element.props.children
+
+node.appendChild(text)
+container.appendChild(node)
+```
+
+Then we create the nodes for the children
+we only have a string as a child so we create a text node
+
+We are using a `textNode` instead of setting the `innerText` because later it will allow us to treat all elements in the same way
+
+```js 9,17,18
+const element = {
+  type: "h1",
+  props: {
+    title: "foo",
+    children: "Hello",
+  },
+}
+
+const container = document.getElementById("root")
+
+const node = document.createElement(element.type)
+node["title"] = element.props.title
+
+const text = document.createTextNode("")
+text["nodeValue"] = element.props.children
+
+node.appendChild(text)
+container.appendChild(node)
+```
+
+Finally, we append the `textNode` to the `h1` and the `h1` to the `container`.
+
+```js 1:18
+const element = {
+  type: "h1",
+  props: {
+    title: "foo",
+    children: "Hello",
+  },
+}
+
+const container = document.getElementById("root")
+
+const node = document.createElement(element.type)
+node["title"] = element.props.title
+
+const text = document.createTextNode("")
+text["nodeValue"] = element.props.children
+
+node.appendChild(text)
+container.appendChild(node)
+```
+
+And now we have the same app as before, but without using React
+
+</WaveSection>
+
+Lorem ipsum dolor sit amet, fugit errem volumus ex sit, magna fugit deserunt et qui. Sapientem mnesarchum ei vis, offendit appetere inimicus eu has. Te utamur voluptua per. Per dicant intellegebat in. Laboramus referrentur id his, electram philosophia sit an. Possim efficiendi no sea, eu admodum copiosae indoctum mea.
+
+Sit eligendi dignissim et, sit eius ancillae voluptatibus te. Ea summo nostrum omnesque sed. Deserunt iracundia definiebas ei est. An vitae reprimique ius, facer timeam cu nam.
+
+Id quot impetus prodesset eum, et usu iuvaret alienum. Ut amet quaerendum pro, impetus appetere disputando te per. Stet congue ancillae mei in, nam fuisset antiopam id. Ad denique blandit accommodare ius. Solum legere ea sea, per cu affert timeam, meis expetendis intellegebat ex pro.
+Delete me, and get writing!
+
+<WaveSection>
+
+```jsx file=./00.jsx
+```
+
+Foo
+
+```jsx file=./01.jsx
+```
+
+Bar
+
+</WaveSection>
+
+Lorem ipsum dolor sit amet, fugit errem avolumus ex sit, magna fugit deserunt et qui. Sapientem mnesarchum ei vis, offendit appetere inimicus eu has. Te utamur voluptua per. Per dicant intellegebat in. Laboramus referrentur id his, electram philosophia sit an. Possim efficiendi no sea, eu admodum copiosae indoctum mea.
+
+Sit eligendi dignissim et, sit eius ancillae voluptatibus te. Ea summo nostrum omnesque sed. Deserunt iracundia definiebas ei est. An vitae reprimique ius, facer timeam cu nam.
+
+Id quot impetus prodesset eum, et usu iuvaret alienum. Ut amet quaerendum pro, impetus appetere disputando te per. Stet congue ancillae mei in, nam fuisset antiopam id. Ad denique blandit accommodare ius. Solum legere ea sea, per cu affert timeam, meis expetendis intellegebat ex pro.
+Delete me, and get writing!

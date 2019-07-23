@@ -6,6 +6,7 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import WithSide from "../components/with-side";
+import replaceImportedCode from "remark-import-code/loader";
 
 const Post = ({
   data: {
@@ -37,7 +38,7 @@ const Post = ({
           </Styled.p>
         }
       />
-      <MDXRenderer>{post.body}</MDXRenderer>
+      <MDXRenderer>{replaceImportedCode(post.body)}</MDXRenderer>
     </main>
   </Layout>
 );
