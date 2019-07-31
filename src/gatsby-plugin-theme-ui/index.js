@@ -4,6 +4,9 @@ import merge from "deepmerge";
 
 const pageInnerMargin = 85;
 const contentWidth = 420;
+const darkerBlue = "#0f8f5e";
+const lightBlue = "#aaf6d9";
+const lighterBlue = "#ebfcf6";
 
 const codeTheme = [
   {
@@ -22,7 +25,7 @@ const codeTheme = [
   {
     types: ["deleted", "string", "attr-value", "char", "number", "inserted"],
     style: {
-      color: "#aaf6d9",
+      color: lightBlue,
     },
   },
   {
@@ -35,7 +38,7 @@ const codeTheme = [
   {
     types: ["builtin", "changed", "keyword", "punctuation", "operator", "tag"],
     style: {
-      color: "#aaf6d9",
+      color: lightBlue,
     },
   },
 ];
@@ -51,6 +54,8 @@ export default merge.all([
       sideBackground: "#202226",
       primary: "salmon",
       modes: null,
+      highlight: lighterBlue,
+      // muted: lighterBlue,
     },
     space: {
       ...blogTheme.space,
@@ -87,6 +92,7 @@ export default merge.all([
         ScrollerStep: {
           padding: 0,
           borderLeft: 0,
+          minHeight: "400px",
         },
         ScrollerProgress: {
           backgroundColor: "muted",

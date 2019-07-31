@@ -13,16 +13,16 @@ You can find the history with all the blog posts and code on the [Didact repo](h
 
 But this post is self-contained. Starting from scratch, these are all the things we'll add to our version of React one by one:
 
-- **Step I**: The `createElement` function
-- **Step II**: The `render` function
-- **Step III**: Concurrent mode
+- **Step I**: The `createElement` Function
+- **Step II**: The `render` Function
+- **Step III**: Concurrent Mode
 - **Step IV**: Fibers
-- **Step V**: Render and commit phases
+- **Step V**: Render and Commit Phases
 - **Step VI**: Reconciliation
-- **Step VII**: Function components
+- **Step VII**: Function Components
 - **Step VIII**: Hooks
 
-X We'll write around 300 lines of code. Don't expect to finish this post in 10 minutes. It will take some time, but it will worth it. You can stop between steps and come back later.
+We'll write around 300 lines of code. Don't expect to finish this post in 10 minutes. It will take some time, but it will worth it. You can stop between steps and come back later.
 
 <WaveSection>
 
@@ -34,14 +34,11 @@ ReactDOM.render(element, container)
 
 ### Step Zero: Review
 
-But first, let's review some basic concepts.
+But first let's review some basic concepts. You can skip this step if you already have a good idea of how React, JSX, elements and DOM mutations work.
 
-We have this React app, just three lines.
+We'll use this React app, just three lines of code. The first one defines a React element. The next one gets a node from the DOM. The last one renders the React element into the container.
 
-The first one defines a React element, using JSX,
-the next one gets a node from the DOM, and the last one renders the react element into the container.
-
-Now, let's remove all the React specific code and replace it with vanilla javascript
+**Let's remove all the React specific code and replace it with vanilla JavaScript**.
 
 ```jsx 1
 const element = <h1 title="foo">Hello</h1>
@@ -49,8 +46,9 @@ const container = document.getElementById("root")
 ReactDOM.render(element, container)
 ```
 
-We start with the JSX.
-JSX isn't handled by React, it's handled by a transpiler like babel. Babel will transform this JSX to a call to `createElement`.
+On the first line we have the element, defined with JSX. It isn't even valid JavaScript, so to replace it with vanilla JS, first we need to replace it with valid JS.
+
+JSX is transformed to JS by build tools like Babel. But the transformation is usually simple: **replace the code inside the tags with a call to `createElement`, passing the tag name, the props and the children as parameters**.
 
 ```jsx
 const element = React.createElement(
@@ -63,7 +61,7 @@ const container = document.getElementById("root")
 ReactDOM.render(element, container)
 ```
 
-`createElement` is very simple, it just puts all the parameters inside an object and returns it.
+`React.createElement` creates an object from its arguments. Besides some validations, that's all it does. So we can safely **replace the function call with its output**.
 
 ```jsx
 const element = {
@@ -78,9 +76,13 @@ const container = document.getElementById("root")
 ReactDOM.render(element, container)
 ```
 
-So, an element is an object with two properties
-the `type`, which for now it's going to be a string
-and the `props` object, containing all the attributes from the JSX and also the `children`, which here is just a string but it could be an array with more elements.
+And this is what an element is, an object with two properties: `type` and `props` (well, it can have more, but we only care about these two).
+
+The `type` is a string that specifies the type of the dom node we want to create, it's the `tagName` you pass to `document.createElement` when you want to create an HTML element. It can also be a function, but we'll leave that for Step VII.
+
+`props` is another object, it has all the keys and values from the JSX attributes. It also has a special property: `children`.
+
+`children` in this case is a string, but it's usually an array with more elements. That's why elements are also trees.
 
 ```jsx 10
 const element = {
