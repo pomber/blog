@@ -52,7 +52,7 @@ export default merge.all([
       background: "#fafafa",
       sideColor: "#eee",
       sideBackground: "#202226",
-      primary: "salmon",
+      primary: "#387780",
       modes: null,
       highlight: lighterBlue,
       // muted: lighterBlue,
